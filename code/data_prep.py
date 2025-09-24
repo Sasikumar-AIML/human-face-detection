@@ -31,7 +31,7 @@ def convert_to_yolo_format(data_dir, annotations_file):
         with open(label_file, "w") as f:
             f.write(f"0 {x_center:.6f} {y_center:.6f} {width:.6f} {height:.6f}\n")
 
-    print("✅ Labels created in:", labels_dir)
+    print("Labels created in:", labels_dir)
 
 
 def create_yolo_dataset(data_dir, output_dir):
@@ -63,7 +63,7 @@ def create_yolo_dataset(data_dir, output_dir):
         shutil.copy(os.path.join(labels_dir, os.path.splitext(img_name)[0] + '.txt'),
                     os.path.join(output_dir, 'labels', 'val'))
 
-    print("✅ Dataset created in:", output_dir)
+    print("Dataset created in:", output_dir)
 
 
 if __name__ == "__main__":
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     print("Step 2: Creating YOLO dataset structure...")
     create_yolo_dataset(raw_data_path, yolo_data_path)
 
-    print("🎉 Dataset preparation complete.")
+    print("Dataset preparation complete.")
 
 yaml_file = os.path.join(os.path.dirname(yolo_data_path), "faces_data.yaml")
 with open(yaml_file, "w") as f:
@@ -86,4 +86,5 @@ with open(yaml_file, "w") as f:
     f.write("nc: 1\n")
     f.write("names: ['face']\n")
 
-print("✅ faces_data.yaml created at:", yaml_file)
+print("faces_data.yaml created at:", yaml_file)
+
